@@ -1,0 +1,34 @@
+// It allow u to see ur scree in real time without need to build it every time.
+
+// 1. Creat extension for UIViewController (for example: "extension+UIViewController")
+// 2. Ctrl + C Crtl + V code below: 
+
+import SwiftUI
+
+extension UIViewController {
+    private struct Preview : UIViewControllerRepresentable {
+        let viewController : UIViewController
+        
+        func makeUIViewController(context: Context) -> some UIViewController {
+            viewController
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        }
+    }
+    
+    func showPreview() -> some View {
+        Preview(viewController: self).edgesIgnoringSafeArea(.all)
+    }
+    
+}
+
+// 3. In any VC you are currently building, import SwiftUI and paste the following code: 
+
+struct ViewControllerProvider : PreviewProvider {
+    static var previews: some View {
+        YourViewControllerName().showPreview()
+    }
+}
+
+// 4. You are flawless!
